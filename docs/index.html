@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>306</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>306</h1>
+        <div class="option-container">
+            <button id="viewRegistrationListBtn" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1_cO6aBvgJZsA5ntGqPIvfPOczohJN72fE8ycRIz6l_k/edit?gid=98155534#gid=98155534'">Danh sách đăng ký lịch làm việc</button>
+            <button id="viewRegistrationListBtn" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1_cO6aBvgJZsA5ntGqPIvfPOczohJN72fE8ycRIz6l_k/edit?gid=2101042385#gid=2101042385'">Danh sách báo cáo công việc</button>
+            <button id="registerScheduleBtn">Đăng Ký Lịch Làm Việc</button>
+            <button id="reportWorkBtn">Báo Cáo Công Việc</button>
+            <button id="registerAreaBtn">Đăng Ký Khu Vực</button>
+
+        </div>
+        <!-- Thông báo -->
+        <div id="notification" class="notification"></div>
+
+        <!-- Đăng ký khu vực -->
+        <div class="form-container" id="registerAreaForm">
+            <form id="areaForm">
+                <div class="form-group">
+                    <label for="workArea">Chọn Khu Vực Làm Việc</label>
+                    <select id="workArea" required>
+                        <option value="">-- Chọn khu vực --</option>
+                        <option value="DNA">Khu DNA</option>
+                        <option value="RNA">Khu RNA</option>
+                        <option value="ELISA">Khu ELISA</option>
+                        <option value="Vi sinh">Vi sinh</option>
+                        <option value="Hậu PCR">Hậu PCR</option>
+                        <option value="Protein">Protein</option>
+                        <option value="Box PCR">Box PCR</option>
+                        <option value="308">308 (Điện di + Thanh trùng)</option>
+                        <option value="Box Vi sinh 305">Box Vi sinh 305</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="areaUserName">Tên Người Đăng Ký</label>
+                    <input type="text" id="areaUserName" placeholder="Nhập tên của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="startTime">Thời Gian Bắt Đầu</label>
+                    <div class="time-selector">
+                        <select id="startHour"></select>
+                        <select id="startMinute"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="endTime">Thời Gian Kết Thúc</label>
+                    <div class="time-selector">
+                        <select id="endHour"></select>
+                        <select id="endMinute"></select>
+                    </div>
+                </div>
+                <button type="button" onclick="submitAreaForm()">Đăng Ký</button>
+            </form>
+        </div>
+
+        <!-- Đăng ký lịch làm việc -->
+        <div class="form-container" id="registerScheduleForm">
+            <form id="scheduleForm">
+                <div class="form-group">
+                    <label for="scheduleUserName">Tên Người Đăng Ký</label>
+                    <input type="text" id="scheduleUserName" placeholder="Nhập tên của bạn" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="sameAsLastWeek" class="large-checkbox">
+                    <label for="sameAsLastWeek">Như tuần trước</label>
+                </div>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Sáng (8:00 - 12:00)</th>
+                            <th>Chiều (13:00 - 17:00)</th>
+                            <th>Tối (17:00 - 21:00)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Thứ 2</td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 2_Sáng" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 2_Chiều" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 2_Tối" class="large-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Thứ 3</td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 3_Sáng" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 3_Chiều" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 3_Tối" class="large-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Thứ 4</td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 4_Sáng" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 4_Chiều" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 4_Tối" class="large-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Thứ 5</td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 5_Sáng" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 5_Chiều" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 5_Tối" class="large-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Thứ 6</td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 6_Sáng" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 6_Chiều" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 6_Tối" class="large-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Thứ 7</td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 7_Sáng" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 7_Chiều" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Thứ 7_Tối" class="large-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Chủ Nhật</td>
+                            <td><input type="checkbox" name="schedule" value="Chủ Nhật_Sáng" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Chủ Nhật_Chiều" class="large-checkbox"></td>
+                            <td><input type="checkbox" name="schedule" value="Chủ Nhật_Tối" class="large-checkbox"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" onclick="submitScheduleForm()">Đăng Ký</button>
+            </form>
+        </div>
+
+        <!-- Form Báo cáo công việc -->
+        <div class="form-container" id="reportWorkForm">
+            <form id="workReportForm">
+                <div class="form-group">
+                    <label for="reportUserName">Tên</label>
+                    <input type="text" id="reportUserName" placeholder="Nhập tên của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportStartDate">Từ ngày</label>
+                    <input type="date" id="reportStartDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportEndDate">Đến ngày</label>
+                    <input type="date" id="reportEndDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportContent">Nội Dung Báo Cáo</label>
+                    <textarea id="reportContent" placeholder="Nhập nội dung báo cáo của bạn" required></textarea>
+                </div>
+                <button type="button" onclick="submitWorkReportForm()">Báo Cáo</button>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
